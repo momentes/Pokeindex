@@ -20,3 +20,4 @@ async function fetchPokemon() {
     }
 }
 
+setInterval(fetchPokemon, 1000);
