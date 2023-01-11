@@ -36,29 +36,7 @@
 
   <div id="pokemonName"></div>
   <img id="pokemonImage" alt="Pokemon">
-  <script>
-    const fetchPokemon = async() => {
-        try {
-            
-            const response = await fetch("https://pokeapi.co/api/v2/pokedex/2/")
-            const data = await response.json();
 
-            // Get a random Pokemon from the list
-            const randomIndex = Math.floor(Math.random() * data.pokemon_entries.length);
-            const pokemon = data.pokemon_entries[randomIndex];
-
-            // Get the Pokemon's image and name
-                  const name = pokemon.pokemon_species.name;
-            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entry_number}.png`;
-           
-   
-            document.getElementById("pokemonName").innerHTML = name;
-            document.getElementById("pokemonImage").src = imageUrl;
-        } catch (error) {
-        }
-    };
-    setInterval(fetchPokemon, 1000);
-  </script>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
