@@ -34,9 +34,26 @@
         </form>
     </div>
 
-  <div id="pokemonName"></div>
-  <img id="pokemonImage" alt="Pokemon">
+  <!-- <div id="pokemonName"></div>
+  <img id="pokemonImage" alt="Pokemon"> -->
 
+
+  <body>
+    <h1>Pokemon Search</h1>
+    <input type="text" id="search-input" placeholder="Enter Pokemon name or number">
+    <button onclick="searchPokemon()">Search</button>
+    <br><br>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="result"></div>
+      </div>
+    </div>
+
+  </body>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
