@@ -47,43 +47,25 @@
 //       });
 // }
 
-function searchPokemon() {
-    const input = document.getElementById("search-input").value;
-    const modal = document.getElementById("myModal");
-    const modalContent = document.querySelector(".modal-content");
-    const span = document.querySelector(".close");
-
-    modalContent.innerHTML = "";
-    
-    fetch(`https://pokeapi.co/api/v2/pokemon/${input}`)
+document.getElementById("searchBtn").addEventListener("click", function(){
+    // get the search input
+    const searchValue = document.getElementById("search").value;
+    // make an api call
+    fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
       .then(response => response.json())
       .then(data => {
-        const name = data.name;
-        const imageUrl = data.sprites.front_default;
-        const moves = data.move-category.map(move => move.move.name).join(', ');
-        const stats = data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ');
-        modalContent.innerHTML = `
-          <img src="${imageUrl}" alt="${name}">
-          <p>Name: ${name}</p>
-          <p>Moves: ${moves}</p>
-          <p>Stats: ${stats}</p>
-        `;
-        modal.style.display = "block";
+        let output = "";
+        output += `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
+        output += `<p>Name: ${data.name}</p>`;
+        output += `<p>Weight: ${data.weight}</p>`;
+        output += `<p>Height: ${data.height}</p>`;
+        output += `<p>Abilities: ${data.abilities.map(d=>d.ability.name).join(', ')}</p>`;
+        output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
+        output += `<p>Stats: ${data.stats.map(d=>d.stat.name+ ' ' + d.base_stat).join(', ')}</p>`;
+        document.getElementById("output").innerHTML = output;
       })
-      .catch(error => {
-        modalContent.innerHTML = "Pokemon not found.";
-        modal.style.display = "block";
+      .catch(err => {
+        document.getElementById("output").innerHTML = "Pokemon not found";
       });
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-}
+  });
+  

@@ -38,22 +38,22 @@
   <img id="pokemonImage" alt="Pokemon"> -->
 
 
-  <body>
-    <h1>Pokemon Search</h1>
-    <input type="text" id="search-input" placeholder="Enter Pokemon name or number">
-    <button onclick="searchPokemon()">Search</button>
-    <br><br>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Pokemon Search</title>
+    </head>
+    <body>
+      <h1>Pokemon Search</h1>
+      <input type="text" id="search" placeholder="Enter Pokemon name...">
+      <button id="searchBtn">Search</button>
+      <br>
+      <div id="output"></div>
+      <script src="script.js"></script>
+    </body>
+  </html>
+  
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="result"></div>
-      </div>
-    </div>
-
-  </body>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
