@@ -70,12 +70,11 @@ document.getElementById("searchBtn").addEventListener("click", function(){
       fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
       .then(response => response.json())
       .then(data => {
+        let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
         let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
         output += `<p>Description: ${flavor_text_entries[randomIndex].flavor_text}</p>`;
         let varieties = data.varieties;
         let randomIndexVariety = Math.floor(Math.random() * varieties.length);
-        let randomVariety = varieties[randomIndexVariety];
-        output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
         let randomVariety = varieties[randomIndexVariety];
         output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
         let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
