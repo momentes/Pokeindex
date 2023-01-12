@@ -5,9 +5,12 @@
     padding: 0% 30%;
     
   }
-  
-  form {
-    display: flex;
+
+  .searchbox{
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
   }
   
   input[type="text"] {
@@ -18,32 +21,45 @@
     border-radius: 3px;
     padding: 0 10px;  
 }
+
+/*  BUTTONS  */
   
   .button-container{
+    justify-content:center;
+    display: flex;
   }
-  .card-button[type="submit"] {
+
+  .button-class{
     height: 50px;
     width: 100px;
     font-size: 14px;
-    background-color: rgb(240, 225, 13);
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 100px;
+    transition: 0.5s;
+    /*margin:  auto;*/
+  }
+
+  .card-button[type="submit"] {
+    background-color: rgb(212, 212, 212);
     color: #fff;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-    margin:  auto;
   }
 
   .search-button[type="submit"] {
-    height: 50px;
-    width: 100px;
-    font-size: 14px;
-    background-color: rgb(13, 36, 240);
+    background-color: rgb(212, 212, 212);
     color: #fff;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-    margin:  auto;
   }
+
+  .button-class:hover {
+    background-color: rgb(151, 151, 151);
+    color: white;
+  }
+
+  /*  LOGO  + POKEBALLS  */
 
   .img-logo{
     display: flex;
@@ -52,20 +68,22 @@
   }
 
 .pokeball {
-  padding-top: 1%;
-  max-width: 150px;
-  height: auto;
+    padding-top: 1%;
+    max-width: 150px;
+    height: auto;
 }
 
 .pokeball-1 {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .pokeball-container{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
 }
+
+/*  GIF  */
 
 .gif-img {
   max-width: 300px;
@@ -76,6 +94,6 @@
   display: flex;
   justify-content: center;
   padding-top: 5%;
-  padding-right: 3%;
+  padding-right: 0%;
 }
 
