@@ -88,12 +88,12 @@ document.getElementById("searchBtn").addEventListener("click", function(){
     });
 });
 
-// Close the modal when the user clicks on the close button
+
 closeModal.onclick = function() {
   modal.style.display = "none";
 }
 
-// Close the modal when the user clicks outside of the modal content
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
