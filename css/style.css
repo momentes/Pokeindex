@@ -1,9 +1,43 @@
+/*  POKEBALL  */
+
+.pokeball {
+    padding-top: 1%;
+    max-width: 150px;
+    height: auto;
+}
+
+.pokeball-1 {
+    transform: scaleX(-1);
+}
+
+.pokeball-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+/*  LOGO  */
+
+  .image-container{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .img-logo{
+    padding: 0.5% 35%;
+    padding-top: 5%;
+    transition: 0.5s;
+  }
+
+/*  SEARCH BAR */
+
 #search-container {
     width: 100%;
     margin: 0 auto;
     text-align: center;
     padding: 0% 30%;
-    
+    transition: 1s;
+
   }
 
   .searchbox{
@@ -20,7 +54,7 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 0 10px;  
-}
+  }
 
 /*  BUTTONS  */
   
@@ -36,8 +70,7 @@
     font-weight: bold;
     cursor: pointer;
     margin: 20px 100px;
-    transition: 0.5s;
-    /*margin:  auto;*/
+    transition: 1s;
   }
 
   .card-button[type="submit"] {
@@ -57,37 +90,15 @@
   .button-class:hover {
     background-color: rgb(151, 151, 151);
     color: white;
+    transition: 0.2s;
   }
-
-  /*  LOGO  + POKEBALLS  */
-
-  .img-logo{
-    display: flex;
-    padding: 0.5% 35%;
-    padding-top: 5%;
-  }
-
-.pokeball {
-    padding-top: 1%;
-    max-width: 150px;
-    height: auto;
-}
-
-.pokeball-1 {
-    transform: scaleX(-1);
-}
-
-.pokeball-container{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 25px;
-}
 
 /*  GIF  */
 
 .gif-img {
   max-width: 300px;
   height: auto;
+  transition: 2.5s;sssssss
 }
 
 .gif-container {
