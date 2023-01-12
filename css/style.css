@@ -1,37 +1,110 @@
+/*  POKEBALL  */
+
+.pokeball {
+    padding-top: 1%;
+    max-width: 150px;
+    height: auto;
+}
+
+.pokeball-1 {
+    transform: scaleX(-1);
+}
+
+.pokeball-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+/*  LOGO  */
+
+  .image-container{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .img-logo{
+    padding: 0.5% 35%;
+    padding-top: 5%;
+    transition: 0.5s;
+  }
+
+/*  SEARCH BAR */
+
 #search-container {
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding: 00% 30%;
-    
+    padding: 0% 30%;
+    transition: 1s;
+
   }
-  
-  form {
-    display: flex;
+
+  .searchbox{
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
   }
   
   input[type="text"] {
     width: 90%;
-    height: 36px;
+    height: 50px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 0 10px;  
-}
+  }
+
+/*  BUTTONS  */
   
-  button[type="submit"] {
-    height: 36px;
-    width: 50px;
+  .button-container{
+    justify-content:center;
+    display: flex;
+  }
+
+  .button-class{
+    height: 50px;
+    width: 100px;
     font-size: 14px;
-    background-color: #4285f4;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 100px;
+    transition: 1s;
+  }
+
+  .card-button[type="submit"] {
+    background-color: rgb(212, 212, 212);
     color: #fff;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
   }
 
-  .img-logo{
-    display: flex;
-    padding: 0.5% 35%;
-    padding-top: 10%;
+  .search-button[type="submit"] {
+    background-color: rgb(212, 212, 212);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
   }
+
+  .button-class:hover {
+    background-color: rgb(151, 151, 151);
+    color: white;
+    transition: 0.2s;
+  }
+
+/*  GIF  */
+
+.gif-img {
+  max-width: 300px;
+  height: auto;
+  transition: 2.5s;sssssss
+}
+
+.gif-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  padding-right: 0%;
+}
+
