@@ -50,6 +50,7 @@
 var modal = document.getElementById("modal");
 var closeModal = document
 
+let searchSuccessful = false;
 document.getElementById("searchBtn").addEventListener("click", function(){
     // get the search input
     const searchValue = document.getElementById("search").value;
@@ -69,11 +70,12 @@ document.getElementById("searchBtn").addEventListener("click", function(){
       fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
       .then(response => response.json())
       .then(data => {
-        let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
         let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
         output += `<p>Description: ${flavor_text_entries[randomIndex].flavor_text}</p>`;
         let varieties = data.varieties;
         let randomIndexVariety = Math.floor(Math.random() * varieties.length);
+        let randomVariety = varieties[randomIndexVariety];
+        output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
         let randomVariety = varieties[randomIndexVariety];
         output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
         let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
@@ -83,9 +85,9 @@ document.getElementById("searchBtn").addEventListener("click", function(){
       });
     })
     .catch(err => {
-        document.getElementById("modal-body").innerHTML = "Pokemon not found";
-        modal.style.display = "block";
-    });
+      document.getElementById("search").value = "";
+      document.getElementById("search").placeholder = "Pokemon not found";
+  });
 });
 
 
