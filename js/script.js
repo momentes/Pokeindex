@@ -47,6 +47,9 @@
 //       });
 // }
 
+var modal = document.getElementById("modal");
+var closeModal = document
+
 document.getElementById("searchBtn").addEventListener("click", function(){
     // get the search input
     const searchValue = document.getElementById("search").value;
@@ -75,10 +78,24 @@ document.getElementById("searchBtn").addEventListener("click", function(){
         output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
         let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
         output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
-        document.getElementById("output").innerHTML = output;
+        document.getElementById("modal-body").innerHTML = output;
+        modal.style.display = "block";
       });
     })
     .catch(err => {
-        document.getElementById("output").innerHTML = "Pokemon not found";
+        document.getElementById("modal-body").innerHTML = "Pokemon not found";
+        modal.style.display = "block";
     });
-  });
+});
+
+// Close the modal when the user clicks on the close button
+closeModal.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Close the modal when the user clicks outside of the modal content
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
