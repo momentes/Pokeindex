@@ -3,7 +3,7 @@ Project 1
 Pokémon Pokédex
 -
 
-This project is to create an application to solve a real-world problem, we decided to create and Pokémon Pokédex to help enthusiasts of the franchise search for information on the pokémon they want to know more about, we decided to use the CSS framework FOUNDATION for this appplication but due to some difficulties we had to change our CSS framework to BULMA. 
+This project is to create an application to solve a real-world problem, we decided to create a Pokémon Pokédex to help enthusiasts of the franchise search for information on the pokémon they want to know more about and show pokémon cards related to their search, we decided to use the CSS framework FOUNDATION for this appplication but due to some difficulties we had to change our CSS framework to BULMA. 
 
 Project Requirements:
 -
