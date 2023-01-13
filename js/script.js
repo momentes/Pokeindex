@@ -60,8 +60,8 @@ document.getElementById("searchBtn").addEventListener("click", function(){
     .then(data => {
       let output = "";
       output += `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
-      output += `<p>Name: ${data.name}</p>`;
-      output += `<p>Weight: ${data.weight}</p>`;
+      output += `<p class="info">Name: <span class="data">${data.name}</span></p>`;
+      output += `<p class="info">Weight: ${data.weight}</p>`;
       output += `<p>Height: ${data.height}</p>`;
       output += `<p>Abilities: ${data.abilities.map(d=>d.ability.name).join(', ')}</p>`;
       output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
@@ -81,6 +81,8 @@ document.getElementById("searchBtn").addEventListener("click", function(){
         output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
         document.getElementById("modal-body").innerHTML = output;
         modal.style.display = "block";
+        // call the fetchTCGData function here
+        fetchTCGData(searchValue);
       });
     })
     .catch(err => {
@@ -88,6 +90,55 @@ document.getElementById("searchBtn").addEventListener("click", function(){
       document.getElementById("search").placeholder = "Pokemon not found";
   });
 });
+
+
+// function fetchTCGData(searchValue) {
+//   fetch(`https://api.tcgdex.net/v2/en/cards/${searchValue}`)
+//       .then(response => response.json())
+//       .then(data => {
+//           let cardOutput = "";
+//           cardOutput += `<p>Card Name: ${data.name}</p>`;
+//           cardOutput += `<p>Card Set: ${data.set}</p>`;
+//           cardOutput += `<p>Card Type: ${data.type}</p>`;
+//           document.getElementById("tcg-data").innerHTML = cardOutput;
+//       });
+// }
+
+
+
+// function fetchTCGData(searchValue) {
+//   fetch(`https://api.tcgdex.net/v2/en/cards/${searchValue}`)
+//       .then(response => response.json())
+//       .then(data => {
+//           let cardOutput = "";
+//           cardOutput += `<p>Card Name: ${data.name}</p>`;
+//           cardOutput += `<p>Card Set: ${data.set}</p>`;
+//           cardOutput += `<p>Card Type: ${data.type}</p>`;
+//           document.getElementById("tcg-data").innerHTML = cardOutput;
+//       });
+// }
+
+
+
+$("#searchBtn").on("click", function(event) {
+  $("#card-container").empty();
+  event.preventDefault();
+  var pokemon = $("#search")
+    .val()
+    .trim();
+
+  $.ajax({
+    method: "GET",
+    url: "https://api.pokemontcg.io/v1/cards?name=" + pokemon
+  }).then(function(response) {
+    for (var i = 0; i < response.cards.length; i++) {
+      var pokemonCard = $("<img class='pkmn-card'>");
+      pokemonCard.attr("src", response.cards[i].imageUrlHiRes);
+      $("#card-container").append(pokemonCard);
+    }
+  });
+});
+
 
 
 closeModal.onclick = function() {
@@ -100,3 +151,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+

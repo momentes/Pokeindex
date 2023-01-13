@@ -43,6 +43,28 @@ body {
     padding-top: 10%;
   }
 
+  /* p:first-of-type::before {
+    content: "Name: ";
+    font-weight: bold;
+  }
+
+   */
+  /* p:nth-child(4) {
+    font-size: 25px;
+    color: #000000;
+  }  */
+
+  
+.info{
+    font-size: 20px;
+    color: blue;
+}
+
+.data{
+  font-size: 20px;
+  color: rgb(192, 21, 160);
+}
+
    /* Modal styling */
    .modal {
     display: none;
@@ -115,5 +137,3 @@ body {
     cursor: pointer;
   }
 
-
-  
