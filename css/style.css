@@ -113,3 +113,41 @@ body {
 #cardModal {
   right: 0;
 }
+
+
+@media only screen and (max-width: 768px) {
+  #pokemonModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center on screen */
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    max-height: 800px;
+    z-index: 2; /* Higher than cardModal */
+  }
+
+  #cardModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center on screen */
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    max-height: 800px;
+    z-index: 1; /* Lower than pokemonModal */
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center on screen */
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    max-height: 800px;
+  }
+}
