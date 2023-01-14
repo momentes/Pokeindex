@@ -47,106 +47,140 @@
 //       });
 // }
 
-var modal = document.getElementById("modal");
-var closeModal = document
 
-// let searchSuccessful = false;
-// document.getElementById("searchBtn").addEventListener("click", function(){
-//     // get the search input
-//     const searchValue = document.getElementById("search").value;
-//     // make an api call for pokemon details
-//     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
-//     .then(response => response.json())
-//     .then(data => {
-//       let output = "";
-//       output += `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
-//       output += `<p class="info">Name: <span class="data">${data.name}</span></p>`;
-//       output += `<p class="info">Weight: ${data.weight}</p>`;
-//       output += `<p>Height: ${data.height}</p>`;
-//       output += `<p>Abilities: ${data.abilities.map(d=>d.ability.name).join(', ')}</p>`;
-//       output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
-//       output += `<p>Stats: ${data.stats.map(d=>d.stat.name+ ' ' + d.base_stat).join(', ')}</p>`;
-//       // make another api call for pokemon-species details
-//       fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
-//       .then(response => response.json())
-//       .then(data => {
-//         let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
-//         let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
-//         output += `<p>Description: ${flavor_text_entries[randomIndex].flavor_text}</p>`;
-//         let varieties = data.varieties;
-//         let randomIndexVariety = Math.floor(Math.random() * varieties.length);
-//         let randomVariety = varieties[randomIndexVariety];
-//         output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
-//         let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
-//         output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
-//         document.getElementById("modal-body").innerHTML = output;
-//         modal.style.display = "block";
-//       });
-//     })
-//     .catch(err => {
-//       document.getElementById("search").value = "";
-//       document.getElementById("search").placeholder = "Pokemon not found";
-//   });
-// });
+// Get the close buttons
+const pokemonClose = document.getElementById("pokemonClose");
+const cardClose = document.getElementById("cardClose");
 
 
+// Get the search button and input
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
 
-let searchSuccessful = false;
-document.getElementById("searchBtn").addEventListener("click", function(){
-  const searchValue = document.getElementById("search").value;
-  console.log(searchValue)
-  fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
-  .then(response => response.json())
-  .then(data => {
-    let output = "";
-    const randomIndex = Math.floor(Math.random() * data.length); // generates a random number within the range of the number of results
-    fetch(`https://api.tcgdex.net/v2/en/cards/${data[randomIndex].id}`)
-        .then(response => response.json()).then((res) => {
-        console.log(res)
-        let output = "";
-        output += `<img src='${res.image}/high.webp' alt='${res.name}'/>`;
-        output += `<p>Name: <span>${res.name}</span></p>`;
-        output += `<p>Card Id: ${res.id}</p>`;
-        document.getElementById("modal-body").innerHTML = output;
-        modal.style.display = "block";
-    });
+
+searchBtn.addEventListener("click", function(){
+  // Get the search value
+  const searchValue = searchInput.value.toLowerCase();
+
+  // Check if the search input is empty
+  if(searchValue === "") {
+    searchInput.value = "";
+    searchInput.placeholder = "Search Pokémon ";
+    return;
+  }
+
+    // Make API call for Pokemon details
+    fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
+    .then(response => response.json())
+    .then(data => {
+      let output = "";
+      let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
+      let imageRandom = "";
+      if(data.sprites.other){
+        let other_sprites = Object.values(data.sprites.other);
+        let randomIndexImage = Math.floor(Math.random() * other_sprites.length);
+        imageRandom = `<img src='${other_sprites[randomIndexImage].front_default}' alt='${data.name}'/>`;
+      }
+
+      output += imageOutput; output += imageRandom;
+      output += `<p>Name: <span>${data.name}</span></p>`;
+      output += `<p>Weight: ${data.weight}</p>`;
+      output += `<p>Height: ${data.height}</p>`;
+      output += `<p>Abilities: ${data.abilities.map(d=>d.ability.name).join(', ')}</p>`;
+      output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
+      output += `<p>Stats: ${data.stats.map(d=>d.stat.name+ ' ' + d.base_stat).join(', ')}</p>`;
+
+    //Make API call for Pokemon-Species details
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
+    .then(response => response.json())
+    .then(data => {
+      let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
+      let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
+      output += `<p>Description: ${flavor_text_entries[randomIndex].flavor_text}</p>`;
+      let varieties = data.varieties;
+      let randomIndexVariety = Math.floor(Math.random() * varieties.length);
+      let randomVariety = varieties[randomIndexVariety];
+      output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
+      let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
+      output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
+
+      // Update the Pokemon modal body
+      document.getElementById("pokemonModalBody").innerHTML = output;
+      
+      // Show the Pokemon modal
+      pokemonModal.style.display = "block";
   })
-    .catch(err => {
-      document.getElementById("search").value = "";
-      document.getElementById("search").placeholder = "Pokemon not found";
+  .catch(err => {
+    searchInput.value = "";
+    searchInput.placeholder = "Pokemon not found";
   });
+
+    // Make API call for card details
+    fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
+    .then(response => response.json())
+    .then(data => {
+      let output = "";
+      const filteredData = data.filter(card => card.name.length === searchValue.length);
+      if (filteredData.length > 0) {
+        const matchedCards = filteredData.filter(card => card.name.toLowerCase() === searchValue.toLowerCase());
+      if (matchedCards.length > 0) {
+        const randomIndex = Math.floor(Math.random() * matchedCards.length);
+         fetch(`https://api.tcgdex.net/v2/en/cards/${matchedCards[randomIndex].id}`)
+           .then(response => response.json())
+           .then(res => {
+              output += `<img src='${res.image}/high.webp' alt='${res.name}'/>`;
+              output += `<p>Name: <span>${res.name}</span></p>`;
+              output += `<p>Card Id: ${res.id}</p>`;
+              // Update the card modal body
+              document.getElementById("cardModalBody").innerHTML = output;
+              // Show the card modal
+              cardModal.style.display = "block";
+            });
+        } else {
+          searchInput.value = "";
+          searchInput.placeholder = "Card not found";
+        }
+      } else {
+        searchInput.value = "";
+        searchInput.placeholder = "Card not found";
+      }
+         })
+          .catch(err => {
+            searchInput.value = "";
+            searchInput.placeholder = "Pokemon not found";
+        });
+    });
+});
+
+// Close the Pokemon modal when the close button is clicked
+pokemonClose.addEventListener("click", function() {
+  pokemonModal.style.display = "none";
+});
+
+// Close the card modal when the close button is clicked
+cardClose.addEventListener("click", function() {
+  cardModal.style.display = "none";
+});
+
+// Close the modals when clicked outside of the modal content
+window.addEventListener("click", function(event) {
+  if (event.target === pokemonModal) {
+    pokemonModal.style.display = "none";
+  }
+  if (event.target === cardModal) {
+    cardModal.style.display = "none";
+  }
 });
 
 
 
-
-// async function getCard(name) {
-//   const response = await fetch(`https://api.tcgdex.net/v2/en/cards?name=${name}`);
-//   const data = await response.json();
-//   return data;
+// closeModal.onclick = function() {
+//   modal.style.display = "none";
 // }
 
-// $("#searchBtn").on("click", function(event) {
-// $("#card-container").empty();
-// let name = $("#search-input").val();
-// getCard(name).then(data => {
-//   console.log(data);
-//   let pokemonCard = createCard(data);
-//   $("#card-container").append(pokemonCard);
-// });
-// });
 
-
-
-
-
-closeModal.onclick = function() {
-  modal.style.display = "none";
-}
-
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }

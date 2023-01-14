@@ -43,24 +43,27 @@
       <title>Pokemon Search</title>
     </head>
 <body>
-  <div class="search-container">
-    <input type="text" id="search" class="search-bar" placeholder="Enter Pokemon name">
-    <button id="searchBtn" class="search-btn">Search</button>
-  </div>
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Pokemon Details</h2>
-        <span id="closeModal" class="close">&times;</span>
+  <div class="modal-container">
+    <!-- Pokemon Modal -->
+    <div id="pokemonModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="pokemonClose">&times;</span>
+        <div id="pokemonModalBody"></div>
       </div>
-      <div id="modal-body" class="modal-body">       
-        <!-- Pokemon details will be displayed here -->
-      </div>
-      <div id="card-container">
-        <!-- Pokemon Card will be displayed here -->
+    </div>
+  
+    <!-- Card Modal -->
+    <div id="cardModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="cardClose">&times;</span>
+        <div id="cardModalBody"></div>
       </div>
     </div>
   </div>
+  
+  <!-- Search Input and Button -->
+  <input type="text" id="searchInput">
+  <button id="searchBtn">Search</button>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
