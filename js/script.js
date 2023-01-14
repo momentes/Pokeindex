@@ -58,6 +58,7 @@ const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 
 
+
 searchBtn.addEventListener("click", function(){
   // Get the search value
   const searchValue = searchInput.value.toLowerCase();
@@ -71,7 +72,12 @@ searchBtn.addEventListener("click", function(){
 
     // Make API call for Pokemon details
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
       let output = "";
       let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
@@ -102,7 +108,12 @@ searchBtn.addEventListener("click", function(){
 
     //Make API call for Pokemon-Species details
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
       let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
       let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
@@ -120,6 +131,7 @@ searchBtn.addEventListener("click", function(){
       // Show the Pokemon modal
       pokemonModal.style.display = "block";
   })
+  //Catch error
   .catch(err => {
     searchInput.value = "";
     searchInput.placeholder = "Pokemon not found";
@@ -127,7 +139,12 @@ searchBtn.addEventListener("click", function(){
 
     // Make API call for card details
     fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
       let output = "";
       const filteredData = data.filter(card => card.name.length === searchValue.length);
@@ -148,19 +165,25 @@ searchBtn.addEventListener("click", function(){
             });
         } else {
           searchInput.value = "";
-          searchInput.placeholder = "Card not found";
+          searchInput.placeholder = "Pokemon not found";
         }
       } else {
         searchInput.value = "";
-        searchInput.placeholder = "Card not found";
+        searchInput.placeholder = "Pokemon not found";
       }
          })
-          .catch(err => {
-            searchInput.value = "";
-            searchInput.placeholder = "Pokemon not found";
-        });
+    })
+    //Catch error
+    .catch(err => {
+      searchInput.value = "";
+      searchInput.placeholder = "Pokemon not found";
     });
 });
+
+
+
+
+
 
 // Close the Pokemon modal when the close button is clicked
 pokemonClose.addEventListener("click", function() {
