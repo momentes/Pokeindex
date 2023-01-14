@@ -75,6 +75,9 @@ searchBtn.addEventListener("click", function(){
     .then(data => {
       let output = "";
       let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
+
+      let imagePokedexRandom = `<img src='${data.sprites.versions["generation-i"].yellow.front_transparent}' alt='${data.name}'/>`;
+
       let imageRandom = "";
       if(data.sprites.other){
         let other_sprites = Object.values(data.sprites.other);
@@ -86,11 +89,10 @@ searchBtn.addEventListener("click", function(){
         }
         imageRandom = `<img src='${randomSprite}' alt='${data.name}'/>`;
     }
-        // let imagePokedexRandom = `<img src='${data.sprites.versions.generation-i.yellow.front_transparent}' alt='${data.name}'/>`;
 
       output += imageOutput; 
+      output += imagePokedexRandom;
       output += imageRandom;
-      // output += imagePokedexRandom;
       output += `<p>Name: <span>${data.name}</span></p>`;
       output += `<p>Weight: ${data.weight}</p>`;
       output += `<p>Height: ${data.height}</p>`;
