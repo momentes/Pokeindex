@@ -58,18 +58,72 @@ const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 
 
+const searchDropdown = document.getElementById("searchDropdown");
+const searchList = document.getElementById("searchList");
+let lastSearches = [];
 
-searchBtn.addEventListener("click", function() {
-  sessionStorage.setItem("searchInputValue", searchInput.value);
+
+searchInput.addEventListener("focus", function(){
+  if(sessionStorage.getItem("lastSearches")) {
+  lastSearches = JSON.parse(sessionStorage.getItem("lastSearches"));
+  searchList.innerHTML = "";
+  for (let i = 0; i < lastSearches.length; i++) {
+    const listItem = document.createElement("li");
+    listItem.innerText = lastSearches[i];
+    listItem.addEventListener("click", function(){
+      searchInput.value = listItem.innerText;
+      searchDropdown.style.display = "none";
+      searchBtn.click();
+    });
+    searchList.appendChild(listItem);
+  }
+  searchDropdown.style.display = "block";
+}
+});
+
+searchInput.addEventListener("blur", function(){
+  searchDropdown.style.display = "none";
+});
+
+searchBtn.addEventListener("click", function(){
+  // Get the search value
+  const searchValue = searchInput.value.toLowerCase();
+
+  // Check if the search input is empty
+  if(searchValue === "") {
+    searchInput.value = "";
+    searchInput.placeholder = "Search Pokémon ";
+    return;
+  }
+
+  // Make API call for Pokemon details
+  fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // If the search is successful, add it to the lastSearches array
+    lastSearches.unshift(searchValue);
+
+    // Keep the array at a maximum of 4 elements
+    if(lastSearches.length > 4) {
+      lastSearches.pop();
+    }
+
+    // Save the lastSearches array to session storage
+    sessionStorage.setItem("lastSearches", JSON.stringify(lastSearches));
+    searchInput.value ="";
+    searchDropdown.style.display = "none";
+  })
+  .catch(error => {
+    console.log(error);
+  });
 });
 
 
-window.onload = function() {
-  let storedValue = sessionStorage.getItem("searchInputValue");
-  if (storedValue) {
-    searchInput.value = storedValue;
-  }
-};
 
 
 searchBtn.addEventListener("click", function(){

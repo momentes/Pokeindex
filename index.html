@@ -45,8 +45,14 @@
 <body>
 
 <!-- Search Input and Button -->
-<input type="text" id="searchInput" placeholder="Search Pokémon">
-<button id="searchBtn">Search</button>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search Pokémon">
+  <button id="searchBtn">Search</button>
+  <div class="dropdown" id="searchDropdown">
+    <ul id="searchList"></ul>
+  </div>
+</div>
+
 
 <div class="modal-container">
   <!-- Pokemon Modal -->
