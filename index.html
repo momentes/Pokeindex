@@ -43,27 +43,30 @@
       <title>Pokemon Search</title>
     </head>
 <body>
-  <div class="modal-container">
-    <!-- Pokemon Modal -->
-    <div id="pokemonModal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="pokemonClose">&times;</span>
-        <div id="pokemonModalBody"></div>
-      </div>
-    </div>
-  
-    <!-- Card Modal -->
-    <div id="cardModal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="cardClose">&times;</span>
-        <div id="cardModalBody"></div>
-      </div>
+
+<!-- Search Input and Button -->
+<input type="text" id="searchInput">
+<button id="searchBtn">Search</button>
+
+<div class="modal-container">
+  <!-- Pokemon Modal -->
+  <div id="pokemonModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="pokemonClose">&times;</span>
+      <div id="pokemonModalBody"></div>
     </div>
   </div>
-  
-  <!-- Search Input and Button -->
-  <input type="text" id="searchInput">
-  <button id="searchBtn">Search</button>
+
+  <!-- Card Modal -->
+  <div id="cardModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cardClose">&times;</span>
+      <div id="cardModalBody"></div>
+    </div>
+  </div>
+</div>
+
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
