@@ -59,6 +59,19 @@ const searchInput = document.getElementById("searchInput");
 
 
 
+searchBtn.addEventListener("click", function() {
+  sessionStorage.setItem("searchInputValue", searchInput.value);
+});
+
+
+window.onload = function() {
+  let storedValue = sessionStorage.getItem("searchInputValue");
+  if (storedValue) {
+    searchInput.value = storedValue;
+  }
+};
+
+
 searchBtn.addEventListener("click", function(){
   // Get the search value
   const searchValue = searchInput.value.toLowerCase();
@@ -81,9 +94,19 @@ searchBtn.addEventListener("click", function(){
     .then(data => {
       let output = "";
       let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
-
-      let imagePokedexRandom = `<img src='${data.sprites.versions["generation-i"].yellow.front_transparent}' alt='${data.name}'/>`;
-
+      let imagePokedexRandom = "";
+      if(data.sprites.versions){
+      let version_keys = Object.keys(data.sprites.versions);
+      let randomVersionIndex = Math.floor(Math.random() * version_keys.length);
+      let randomVersionKey = version_keys[randomVersionIndex];
+      let randomVersion = data.sprites.versions[randomVersionKey];
+      let pokeDexIndex = null;
+      while(pokeDexIndex === null){
+        pokeDexIndex = Object.keys(randomVersion)[Math.floor(Math.random() * Object.keys(randomVersion).length)];
+      }
+      imagePokedexRandom = `<img src='${randomVersion[pokeDexIndex].front_default}' alt='${data.name}'/>`;
+    }
+      
       let imageRandom = "";
       if(data.sprites.other){
         let other_sprites = Object.values(data.sprites.other);
@@ -183,8 +206,6 @@ searchBtn.addEventListener("click", function(){
 
 
 
-
-
 // Close the Pokemon modal when the close button is clicked
 pokemonClose.addEventListener("click", function() {
   pokemonModal.style.display = "none";
@@ -204,6 +225,8 @@ window.addEventListener("click", function(event) {
     cardModal.style.display = "none";
   }
 });
+
+
 
 
 
