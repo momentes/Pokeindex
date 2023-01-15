@@ -54,7 +54,7 @@ THEN I am presented with references to no Pokemon is found
 below is a link to our wireframe:
 
 - https://www.figma.com/file/XTmvCTism6jFLKHmJtERq8/Ekans-Kanban-%26-User-Story?node-id=0%3A1&t=6upLGncRzqc3QBx2-1
-<img src="Images/Wireframe_Test.png" width=15%>
+<img src="Images/Wireframe_Test.png" width=25%>
 
 below is a link to our project to-do list:
 
