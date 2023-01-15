@@ -1,4 +1,4 @@
-Project Ekans Group
+**Project Ekans Group**
 -
 **Pokémon Pokédex & Cards**
 -
@@ -30,13 +30,23 @@ Project Requirements:
 
 **User Story**
 ```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-
-
-```
-
+AS A Pokemon "Game" Fan and to celebrate the end of Ash Ketchum & Pikachu 25-year journey
+I WANT to search for Pokemon 
+SO THAT I can view information about the Pokemon I want 
+WHEN I land on the page
+I WANT to see Pokemon graphics and style
+GIVEN I want to view the information in a leisurely & sentimental manner
+THEN the search result must provide me randomize information of the pokemon I search to keep my engagement
+AS A Pokemon "Game" Fan both the Nintendo Game Boy version and Card game
+I WANT the search result to provide me both the information of view side by side in desktop
+I WANT the search result to provide me both the information of top bottom on mobile
+AS IT is a random generator,
+I WANT the last 4 minimum succesfull search result to be prompt on active "when searching"
+AS IT is a random generator,
+I WANT to see random images, cards and of the pokemon I search to keep my engagement
+THE SAME search is no longer boring
+WHEN promopt with a non Pokemon search
+THEN I am presented with references to no "Pokemon is found"
 
 
 **Other Reference Link**
