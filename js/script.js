@@ -195,7 +195,7 @@ searchBtn.addEventListener("click", function(){
          // Itemized Move to Single Line
         //Upper Case
         // moveRandom = `<p>Moves: ${randomMoves.map(move => move.name).join(', ')}</p>`;
-        moveRandom = `<p>Moves: ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
+        moveRandom = `<p class="FontStyle1"><span class="FontStyle2">Name: </span> ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
         
 
         //Upper Case
@@ -210,13 +210,12 @@ searchBtn.addEventListener("click", function(){
       output += imageOutput; 
       output += imagePokedexRandom;
       output += imageRandom;
-      output += `<p>Name: ${capitalize(data.name)}</p>`;
-      output += `<p>Name: ${capitalize(data.name)}</p>`;
-      output += `<p>Type: ${data.types.map(d=> capitalize(d.type.name)).join(', ')}</p>`;
-      output += `<p class="FontStyle1">Weight: <span class="FontStyle2">${data.weight}<span></p>`; //No Caps on Numbers
-      output += `<p>Height: ${data.height}</p>`; //No Caps on Numbers
-      output += `<p>Stats: ${data.stats.map(d=> capitalize(d.stat.name) + ' ' + d.base_stat).join(', ')}</p>`;
-      output += `<p>Abilities: ${data.abilities.map(d=> capitalize(d.ability.name)).join(', ')}</p>`;
+      output += `<p class="FontStyle1"><span class="FontStyle2">Name: </span> ${capitalize(data.name)}</p>`;
+      output += `<p class="FontStyle1"><span class="FontStyle2">Type: </span>${data.types.map(d=> capitalize(d.type.name)).join(', ')}</p>`;
+      output += `<p class="FontStyle1"><span class="FontStyle2">Weight: </span> <span ">${data.weight} KG </span></p>`; //No Caps on Numbers
+      output += `<p class="FontStyle1"><span class="FontStyle2">Height: </span>${data.height} CM </p>`; //No Caps on Numbers
+      output += `<p class="FontStyle1"><span class="FontStyle2">Stats: </span> ${data.stats.map(d=> capitalize(d.stat.name) + ' ' + d.base_stat).join(', ')}</p>`;
+      output += `<p class="FontStyle1"><span class="FontStyle2">Abilities: </span> ${data.abilities.map(d=> capitalize(d.ability.name)).join(', ')}</p>`;
       output += moveRandom;
 
     //Make API call for Pokemon-Species Pokedex details
@@ -230,13 +229,13 @@ searchBtn.addEventListener("click", function(){
     .then(data => {
       let flavor_text_entries = data.flavor_text_entries.filter(d=>d.language.name==='en');
       let randomIndex = Math.floor(Math.random() * flavor_text_entries.length);
-      output += `<p>Description: ${flavor_text_entries[randomIndex].flavor_text}</p>`;
+      output += `<p class="FontStyle1"><span class="FontStyle2">Description: </span> ${flavor_text_entries[randomIndex].flavor_text}</p>`;
       let varieties = data.varieties;
       let randomIndexVariety = Math.floor(Math.random() * varieties.length);
       let randomVariety = varieties[randomIndexVariety];
-      output += `<p>Name Variety: ${capitalize(randomVariety.pokemon.name)}</p>`;
+      output += `<p class="FontStyle1"> <span class="FontStyle2">Name Variety: </span> ${capitalize(randomVariety.pokemon.name)}</p>`;
       let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
-      output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
+      output += `<p class="FontStyle1"> <span class="FontStyle2">Pokedex Number: </span> ${pokedex_number[0].entry_number}</p>`;
 
       // Update the Pokemon modal body
       document.getElementById("pokemonModalBody").innerHTML = output;
@@ -270,8 +269,8 @@ searchBtn.addEventListener("click", function(){
            .then(response => response.json())
            .then(res => {
               output += `<img src='${res.image}/high.webp' alt='${res.name}'/>`;
-              output += `<p>Name:${res.name}</p>`;
-              output += `<p>Card Id: ${res.id}</p>`;
+              //output += `<p>Name:${res.name}</p>`;
+              output += `<p class="FontStyle2">Card Id: ${res.id}</p>`;
               // Update the card modal body
               document.getElementById("cardModalBody").innerHTML = output;
               // Show the card modal
