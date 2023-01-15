@@ -28,7 +28,9 @@ Project Requirements:
 - Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 
+
 **User Story**
+-
 ```md
 AS A Pokemon Game Fan and to celebrate the end of Ash Ketchum & Pikachu 25-year journey
 I WANT to search for Pokemon 
@@ -49,12 +51,13 @@ WHEN promopt with a non Pokemon search
 THEN I am presented with references to no Pokemon is found
 ```
 
-**Other Reference Link**
 
+**Other Reference Link**
+-
 below is a link to our wireframe:
 
 - https://www.figma.com/file/XTmvCTism6jFLKHmJtERq8/Ekans-Kanban-%26-User-Story?node-id=0%3A1&t=6upLGncRzqc3QBx2-1
-<img src="Images/Wireframe_Test.png" width=25%>
+<img src="Images/Wireframe_Test.png" width=35%>
 
 below is a link to our project to-do list:
 
@@ -63,6 +66,7 @@ below is a link to our project to-do list:
 
 Once our application is deployed a link and a screenshot of our application will be below
 - https://momentes.github.io/Ekans_Project_01/
+<img src="Images/LiveSite_01.png" width=35%>  <img src="Images/LiveSite_02.png" width=35%> 
 
 
 **Credits & References/Resources**
@@ -83,12 +87,14 @@ Once our application is deployed a link and a screenshot of our application will
 - Image Credit, Pokemon World - https://wallpaperaccess.com/pokemon-map
 - Ash Ketchum a 25 year run of the Pokemon Adventure
 
+
 **API's**
 -
 - https://pokeapi.co/api/v2/pokemon/
 - https://pokeapi.co/api/v2/pokedex/2
 - https://pokeapi.co/api/v2/pokemon-species
 - https://api.tcgdex.net/v2/en/cards
+
 
 
 This project is for Private use/learning classes and not for commerical or public consumption.Please get in contact if you wish to remove some of the refrences used.
