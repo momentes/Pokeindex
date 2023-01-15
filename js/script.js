@@ -369,7 +369,7 @@ function timerIncrement() {
         document.body.appendChild(catModal);
         setTimeout(() => {
             catModal.remove();
-        }, 2500); // remove the cat modal after 2.0 seconds
+        }, 2000); // remove the cat modal after 2.0 seconds
     })
     .catch(error => {
         console.log(error);
