@@ -36,7 +36,7 @@ below is a link to our wireframe:
 
 below is a link to our project to-do list:
 
--https://github.com/users/momentes/projects/1/views/1
+- https://github.com/users/momentes/projects/1/views/1
 
 
 Once our application is deployed a link and a screenshot of our application will be below
