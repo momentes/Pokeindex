@@ -1,4 +1,9 @@
 
+
+
+
+// Random Pokemon Image Generator
+
 // async function fetchPokemon() {
 //     try {
 //         const response = await fetch("https://pokeapi.co/api/v2/pokedex/2/");
@@ -23,30 +28,9 @@
 // setInterval(fetchPokemon, 1000);
 
 
-// function searchPokemon() {
-//     const input = document.getElementById("search-input").value;
-//     const resultDiv = document.getElementById("result");
-//     resultDiv.innerHTML = "";
+////////////////////////////////////////
 
-//     fetch(`https://pokeapi.co/api/v2/pokemon/${input}`)
-//       .then(response => response.json())
-//       .then(data => {
-//         const name = data.name;
-//         const imageUrl = data.sprites.front_default;
-//         const moves = data.moves.map(move => move.move.name).join(', ');
-//         const stats = data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ');
-//         resultDiv.innerHTML = `
-//           <img src="${imageUrl}" alt="${name}">
-//           <p>Name: ${name}</p>
-//           <p>Moves: ${moves}</p>
-//           <p>Stats: ${stats}</p>
-//         `;
-//       })
-//       .catch(error => {
-//         resultDiv.innerHTML = "Pokemon not found.";
-//       });
-// }
-
+// Variables
 
 // Get the close buttons
 const pokemonClose = document.getElementById("pokemonClose");
@@ -60,29 +44,30 @@ const searchInput = document.getElementById("searchInput");
 
 const searchDropdown = document.getElementById("searchDropdown");
 const searchList = document.getElementById("searchList");
-let lastSearches = [];
 
+
+//////////////////////////////////////////////
+
+// Session Storage
+
+let lastSearches = [];
 
 searchInput.addEventListener("focus", function(){
   if(sessionStorage.getItem("lastSearches")) {
-  lastSearches = JSON.parse(sessionStorage.getItem("lastSearches"));
-  searchList.innerHTML = "";
-  for (let i = 0; i < lastSearches.length; i++) {
-    const listItem = document.createElement("li");
-    listItem.innerText = lastSearches[i];
-    listItem.addEventListener("click", function(){
-      searchInput.value = listItem.innerText;
-      searchDropdown.style.display = "none";
-      searchBtn.click();
-    });
-    searchList.appendChild(listItem);
+    lastSearches = JSON.parse(sessionStorage.getItem("lastSearches"));
+    searchList.innerHTML = "";
+    for (let i = 0; i < lastSearches.length; i++) {
+      const listItem = document.createElement("li");
+      listItem.innerText = lastSearches[i];
+      listItem.addEventListener("click", function(){
+        searchInput.value = listItem.innerText;
+        searchBtn.click();
+        searchDropdown.style.display = "none";
+      });
+      searchList.appendChild(listItem);
+    }
+    searchDropdown.style.display = "block";
   }
-  searchDropdown.style.display = "block";
-}
-});
-
-searchInput.addEventListener("blur", function(){
-  searchDropdown.style.display = "none";
 });
 
 searchBtn.addEventListener("click", function(){
@@ -123,9 +108,18 @@ searchBtn.addEventListener("click", function(){
   });
 });
 
+/////////////////////////////////////////////
 
+// Pokemon Search
 
+// Search on Enter
+searchInput.addEventListener("keydown", function(event){
+  if(event.keyCode === 13){
+    searchBtn.click();
+  }
+});
 
+// Search algorithym 
 searchBtn.addEventListener("click", function(){
   // Get the search value
   const searchValue = searchInput.value.toLowerCase();
@@ -137,7 +131,8 @@ searchBtn.addEventListener("click", function(){
     return;
   }
 
-    // Make API call for Pokemon details
+/////////////////////////////
+    // Make API call for Pokemon Pokedex details
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
     .then(response => {
         if (!response.ok) {
@@ -183,7 +178,7 @@ searchBtn.addEventListener("click", function(){
       output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
       output += `<p>Stats: ${data.stats.map(d=>d.stat.name+ ' ' + d.base_stat).join(', ')}</p>`;
 
-    //Make API call for Pokemon-Species details
+    //Make API call for Pokemon-Species Pokedex details
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
     .then(response => {
         if (!response.ok) {
@@ -214,6 +209,7 @@ searchBtn.addEventListener("click", function(){
     searchInput.placeholder = "Pokemon not found";
   });
 
+ //////////////////////// 
     // Make API call for card details
     fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
     .then(response => {
@@ -250,7 +246,6 @@ searchBtn.addEventListener("click", function(){
       }
          })
     })
-    //Catch error
     .catch(err => {
       searchInput.value = "";
       searchInput.placeholder = "Pokemon not found";
@@ -258,8 +253,10 @@ searchBtn.addEventListener("click", function(){
 });
 
 
+//////////////////////////////////////////////
 
 
+// Background Search Image Function
 // Close the Pokemon modal when the close button is clicked
 pokemonClose.addEventListener("click", function() {
   pokemonModal.style.display = "none";
@@ -279,8 +276,6 @@ window.addEventListener("click", function(event) {
     cardModal.style.display = "none";
   }
 });
-
-
 
 
 
