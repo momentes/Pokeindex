@@ -34,6 +34,10 @@ below is a link to our wireframe:
 
 - https://www.figma.com/file/XTmvCTism6jFLKHmJtERq8/Ekans-Kanban-%26-User-Story?node-id=0%3A1&t=6upLGncRzqc3QBx2-1
 
+below is a link to our project to-do list:
+
+-https://github.com/users/momentes/projects/1/views/1
+
 
 Once our application is deployed a link and a screenshot of our application will be below
 
