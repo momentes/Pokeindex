@@ -65,8 +65,9 @@ below is a link to our project to-do list:
 
 
 Once our application is deployed a link and a screenshot of our application will be below
-- https://momentes.github.io/Ekans_Project_01/
-<img src="Images/LiveSite_01.png" width=35%>  <img src="Images/LiveSite_02.png" width=35%> 
+- https://momentes.github.io/Ekans_Project_01/     
+
+<img src="Images/LiveSite_01.png" width=35%>    <img src="Images/LiveSite_02.png" width=35%> 
 
 
 **Credits & References/Resources**
