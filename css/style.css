@@ -261,11 +261,10 @@ form {
   transition: 0.8s;
 }
 
-
-.modal-container {
-  height: 900px;
+#pokemonModalBody , #cardModalBody {
+  height: auto;
 }
 
-#pokemonModalBody {
-  height: 850px;
+.modal-content{
+  height: 800px;
 }
