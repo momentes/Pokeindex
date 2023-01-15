@@ -17,7 +17,7 @@ body {
     display: flex;
   }
   
-  input[type="text"] {
+#searchInput {
     width: 90%;
     height: 36px;
     font-size: 14px;
@@ -26,7 +26,7 @@ body {
     padding: 0 10px;  
 }
   
-  button[type="submit"] {
+#searchBtn {
     height: 36px;
     width: 50px;
     font-size: 14px;
@@ -115,6 +115,23 @@ body {
 }
 
 
+
+/* Styling Modal Text and Image Size */
+.FontStyle1 {
+  font-size: 25px;
+  }
+
+.FontStyle2
+{
+  color: rgb(255, 72, 0);
+}
+
+p::first-letter{
+text-transform: uppercase
+}
+
+
+/* Media Mobile Display  */
 
 @media only screen and (max-width: 768px) {
   #pokemonModal {

@@ -51,8 +51,10 @@ const searchList = document.getElementById("searchList");
 // Session Storage
 
 let lastSearches = [];
+let timeoutId; //I cant believe timeoutID and not using trigger! brilliant!//
 
 searchInput.addEventListener("focus", function(){
+  clearTimeout(timeoutId);
   if(sessionStorage.getItem("lastSearches")) {
     lastSearches = JSON.parse(sessionStorage.getItem("lastSearches"));
     searchList.innerHTML = "";
@@ -68,6 +70,12 @@ searchInput.addEventListener("focus", function(){
     }
     searchDropdown.style.display = "block";
   }
+});
+
+searchInput.addEventListener("blur", function(){
+  timeoutId = setTimeout(() => {
+    searchDropdown.style.display = "none";
+  }, 200);
 });
 
 searchBtn.addEventListener("click", function(){
@@ -108,6 +116,8 @@ searchBtn.addEventListener("click", function(){
   });
 });
 
+
+
 /////////////////////////////////////////////
 
 // Pokemon Search
@@ -143,6 +153,7 @@ searchBtn.addEventListener("click", function(){
     .then(data => {
       let output = "";
       let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
+      
       let imagePokedexRandom = "";
       if(data.sprites.versions){
       let version_keys = Object.keys(data.sprites.versions);
@@ -168,15 +179,47 @@ searchBtn.addEventListener("click", function(){
         imageRandom = `<img src='${randomSprite}' alt='${data.name}'/>`;
     }
 
+    let moveRandom = "";
+    let moves = data.moves;
+    let randomMoves = [];
+    while(randomMoves.length < 6) {
+      let randomMoveIndex = Math.floor(Math.random() * moves.length);
+      let randomMove = moves[randomMoveIndex].move;
+      if(!randomMoves.includes(randomMove)) {
+        randomMoves.push(randomMove);
+
+        // Itemized Move Line
+        // moveRandom += `<p>Move: ${randomMove.name}</p>`;
+
+        // Upper Case
+        // moveRandom += `<p>Move: ${randomMove.name.charAt(0).toUpperCase() + randomMove.name.slice(1)}</p>`;
+
+         // Itemized Move to Single Line
+        //Upper Case
+        // moveRandom = `<p>Moves: ${randomMoves.map(move => move.name).join(', ')}</p>`;
+        moveRandom = `<p>Moves: ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
+        
+
+        //Upper Case
+      //   moveRandom = `<p>Moves: ${randomMoves.map(move => move.name.replace(/([A-Z])/g, ' $1').trim().charAt(0).toUpperCase() + move.name.slice(1)).join(', ')}</p>`;
+      }
+    }
+
+    function capitalize(str) {
+      return str.replace(/\b[a-z]/g, (x) => x.toUpperCase());
+      }
+
       output += imageOutput; 
       output += imagePokedexRandom;
       output += imageRandom;
-      output += `<p>Name: <span>${data.name}</span></p>`;
-      output += `<p>Weight: ${data.weight}</p>`;
-      output += `<p>Height: ${data.height}</p>`;
-      output += `<p>Abilities: ${data.abilities.map(d=>d.ability.name).join(', ')}</p>`;
-      output += `<p>Type: ${data.types.map(d=>d.type.name).join(', ')}</p>`;
-      output += `<p>Stats: ${data.stats.map(d=>d.stat.name+ ' ' + d.base_stat).join(', ')}</p>`;
+      output += `<p>Name: ${capitalize(data.name)}</p>`;
+      output += `<p>Name: ${capitalize(data.name)}</p>`;
+      output += `<p>Type: ${data.types.map(d=> capitalize(d.type.name)).join(', ')}</p>`;
+      output += `<p class="FontStyle1">Weight: <span class="FontStyle2">${data.weight}<span></p>`; //No Caps on Numbers
+      output += `<p>Height: ${data.height}</p>`; //No Caps on Numbers
+      output += `<p>Stats: ${data.stats.map(d=> capitalize(d.stat.name) + ' ' + d.base_stat).join(', ')}</p>`;
+      output += `<p>Abilities: ${data.abilities.map(d=> capitalize(d.ability.name)).join(', ')}</p>`;
+      output += moveRandom;
 
     //Make API call for Pokemon-Species Pokedex details
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}`)
@@ -193,7 +236,7 @@ searchBtn.addEventListener("click", function(){
       let varieties = data.varieties;
       let randomIndexVariety = Math.floor(Math.random() * varieties.length);
       let randomVariety = varieties[randomIndexVariety];
-      output += `<p>Name Variety: ${randomVariety.pokemon.name}</p>`;
+      output += `<p>Name Variety: ${capitalize(randomVariety.pokemon.name)}</p>`;
       let pokedex_number = data.pokedex_numbers.filter(d=>d.pokedex.name === "national");
       output += `<p>Pokedex Number: ${pokedex_number[0].entry_number}</p>`;
 
@@ -229,7 +272,7 @@ searchBtn.addEventListener("click", function(){
            .then(response => response.json())
            .then(res => {
               output += `<img src='${res.image}/high.webp' alt='${res.name}'/>`;
-              output += `<p>Name: <span>${res.name}</span></p>`;
+              output += `<p>Name:${res.name}</p>`;
               output += `<p>Card Id: ${res.id}</p>`;
               // Update the card modal body
               document.getElementById("cardModalBody").innerHTML = output;
