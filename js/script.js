@@ -335,7 +335,7 @@ window.addEventListener("click", function(event) {
 
 ////////////////////////
 let idle = false;
-let idleInterval = setInterval(timerIncrement, 50000); // check for idle every 5 minute
+let idleInterval = setInterval(timerIncrement, 40000); // check for idle every 4 minute
 
 // Check for user activity
 document.addEventListener("mousemove", resetIdleTimer);
