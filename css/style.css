@@ -41,35 +41,6 @@ body {
 
 /*  SEARCH BAR */
 
-.search-container {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 0% 30%;
-    transition: 1s;
-
-  }
-  
-  #searchInput{
-    border-top-left-radius: 10px !important;
-    border-bottom-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-  }
-  
-  input[type="text"] {
-    width: 90%;
-    height: 50px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: 0 10px;  
-  }
-
-.dropdown {
-  background-color: rgba(0,0,0,.5);
-  color: #fff;
-}
 
 /*  BUTTONS  */
 #searchBtn {
