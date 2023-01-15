@@ -331,3 +331,52 @@ window.addEventListener("click", function(event) {
 //   }
 // }
 
+
+
+////////////////////////
+let idle = false;
+let idleInterval = setInterval(timerIncrement, 50000); // check for idle every 5 minute
+
+// Check for user activity
+document.addEventListener("mousemove", resetIdleTimer);
+document.addEventListener("keypress", resetIdleTimer);
+
+function resetIdleTimer() {
+  idle = false;
+}
+
+function timerIncrement() {
+  if (idle) {
+    // Fetch cat API and display image
+    fetch("https://aws.random.cat/meow")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const catModal = document.createElement("div");
+        catModal.id = "catModal";
+        catModal.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        `;
+        catModal.innerHTML = `<img src='${data.file}' alt='cat'/>`;
+        document.body.appendChild(catModal);
+        setTimeout(() => {
+            catModal.remove();
+        }, 2500); // remove the cat modal after 2.0 seconds
+    })
+    .catch(error => {
+        console.log(error);
+    });
+  } else {
+    idle = true;
+  }
+}
+
+

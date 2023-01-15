@@ -77,6 +77,7 @@ Once our application is deployed a link and a screenshot of our application will
 - Website Credits - https://www.jamesqquick.com/blog/build-a-pokedex-with-vanilla-javascript-part-2/
 - Website Credits - https://dev.to/tqbit/how-to-make-api-calls-with-javascript-21cg
 - Website Credits - https://www.section.io/engineering-education/how-and-when-to-apply-session-storage-with-javascript/
+- Website Credits - https://codepen.io/xaca/pen/wveYQoq
 - Image Credit, Pokeball - https://www.wikidata.org/wiki/Q19847
 - Image Credit, Pokemon World - https://wallpaperaccess.com/pokemon-map
 - Ash Ketchum a 25 year run of the Pokemon Adventure
