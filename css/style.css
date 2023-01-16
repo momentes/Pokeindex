@@ -12,19 +12,18 @@ body {
 
 
 .notefooter {
-  position:fixed ;
   bottom: 0px;;
   width: 100%;
   height: 20px; 
-  font-size: small;
+  font-size: 12px;
 }
 
 /*  POKEBALL  */
 
 .pokeball-container{
   display: flex;
-  padding: 25px;
-  max-width: 200px;
+  padding: 15px;
+  max-width: 100px;
   justify-content: space-between;
 } 
 
@@ -46,12 +45,11 @@ body {
     display: flex;
     justify-content: center;
   }
-  
+   */
   .img-logo{
-    padding: 0.5% 35%;
-    padding-top: 5%;
+    width: 40%;
     transition: 0.5s;
-  } */
+  }
 
 /*  SEARCH BAR */
 
@@ -126,7 +124,7 @@ body {
 /*  GIF  */
 
 .gif-img {
-  max-width: 400px;
+  max-width: 300px;
   height: auto;
   transition: 2.5s;
 }
@@ -210,14 +208,15 @@ form {
   background-color: #fefefe;
   font-weight: bold;
   text-transform: uppercase;
+
 }
 
 .modalImage {
-  min-width: 250px;
+  min-width: 110px;
 }
 
 .modalImageB {
-
+  max-width: 350px;
 }
 
 /* Media Mobile Display  */
