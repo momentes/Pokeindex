@@ -68,7 +68,7 @@ below is a link to our project to-do list:
 Once our application is deployed a link and a screenshot of our application will be below
 - https://momentes.github.io/Pokeindex/  
 
-<img src="Images/LiveSite_01.png" width=35%>    <img src="Images/LiveSite_02.png" width=33%> 
+<img src="Images/LiveSite_01.png" width=28%>    <img src="Images/LiveSite_02.png" width=28%> 
 
 
 **Credits & References/Resources**
