@@ -126,7 +126,7 @@ body {
 /*  GIF  */
 
 .gif-img {
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
   transition: 2.5s;
 }
