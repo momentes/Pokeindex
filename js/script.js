@@ -80,7 +80,7 @@ searchBtn.addEventListener("click", function(){
   // Get the search value
   const searchValue = searchInput.value.toLowerCase();
 
-  // Check if the search input is empty
+
   if(searchValue === "") {
     searchInput.value = "";
     searchInput.placeholder = "Search Pokémon ";
@@ -96,10 +96,10 @@ searchBtn.addEventListener("click", function(){
     return response.json();
   })
   .then(data => {
-    // If the search is successful, add it to the lastSearches array
+    // If the search is successful, add lastSearches array
     lastSearches.unshift(searchValue);
 
-    // Keep the array at a maximum of 5 elements
+    // Keep search at 5 elements
     if(lastSearches.length > 5) {
       lastSearches.pop();
     }
@@ -127,9 +127,8 @@ searchInput.addEventListener("keydown", function(event){
   }
 });
 
-// Search algorithym 
 searchBtn.addEventListener("click", function(){
-  // Get the search value
+
   const searchValue = searchInput.value.toLowerCase();
 
   // Check if the search input is empty
@@ -250,6 +249,7 @@ searchBtn.addEventListener("click", function(){
   });
 
  //////////////////////// 
+
     // Make API call for card details
     fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
     .then(response => {
@@ -278,17 +278,17 @@ searchBtn.addEventListener("click", function(){
             });
         } else {
           searchInput.value = "";
-          searchInput.placeholder = "Pokemon not found";
+          searchInput.placeholder = "Pokémon not found";
         }
       } else {
         searchInput.value = "";
-        searchInput.placeholder = "Pokemon not found";
+        searchInput.placeholder = "Pokémon not found";
       }
          })
     })
     .catch(err => {
       searchInput.value = "";
-      searchInput.placeholder = "Pokemon not found";
+      searchInput.placeholder = "Pokémon not found";
     });
 });
 
@@ -296,18 +296,18 @@ searchBtn.addEventListener("click", function(){
 //////////////////////////////////////////////
 
 
-// Background Search Image Function
-// Close the Pokemon modal when the close button is clicked
+// Modal Image Function
+// Close the Pokemon modal clicking button close
 pokemonClose.addEventListener("click", function() {
   pokemonModal.style.display = "none";
 });
 
-// Close the card modal when the close button is clicked
+// Close the card modal clicking button close
 cardClose.addEventListener("click", function() {
   cardModal.style.display = "none";
 });
 
-// Close the modals when clicked outside of the modal content
+// Close the modals when clicked outside content
 window.addEventListener("click", function(event) {
   if (event.target === pokemonModal) {
     pokemonModal.style.display = "none";
@@ -346,7 +346,6 @@ function resetIdleTimer() {
 
 function timerIncrement() {
   if (idle) {
-    // Fetch cat API and display image
     fetch("https://aws.random.cat/meow")
     .then(response => {
         if (!response.ok) {
