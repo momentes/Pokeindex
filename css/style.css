@@ -12,7 +12,7 @@ body {
 
 
 .notefooter {
-  position:absolute ;
+  position:relative;
   bottom: 0px;;
   width: 100%;
   height: 20px; 
@@ -308,6 +308,14 @@ form {
 
 .modalImageB {
   max-width: 400px;
+}
+
+.notefooter {
+  position:absolute;
+  bottom: 0px;;
+  width: 100%;
+  height: 20px; 
+  font-size: 12px;
 }
 
 
