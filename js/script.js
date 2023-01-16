@@ -149,7 +149,7 @@ searchBtn.addEventListener("click", function(){
     })
     .then(data => {
       let output = "";
-      let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}'/>`;
+      let imageOutput = `<img src='${data.sprites.front_default}' alt='${data.name}' class='modalImage'/>`;
       
       let imagePokedexRandom = "";
       if(data.sprites.versions){
@@ -161,7 +161,7 @@ searchBtn.addEventListener("click", function(){
       while(pokeDexIndex === null){
         pokeDexIndex = Object.keys(randomVersion)[Math.floor(Math.random() * Object.keys(randomVersion).length)];
       }
-      imagePokedexRandom = `<img src='${randomVersion[pokeDexIndex].front_default}' alt='${data.name}'/>`;
+      imagePokedexRandom = `<img src='${randomVersion[pokeDexIndex].front_default}' alt='${data.name}' class='modalImage'/>`;
     }
       
       let imageRandom = "";
@@ -173,7 +173,7 @@ searchBtn.addEventListener("click", function(){
         while(randomSprite === null){
             randomSprite = Object.values(randomVersion)[Math.floor(Math.random() * Object.values(randomVersion).length)];
         }
-        imageRandom = `<img src='${randomSprite}' alt='${data.name}'/>`;
+        imageRandom = `<img src='${randomSprite}' alt='${data.name}'class='modalImageB'/>`;
     }
 
     let moveRandom = "";
@@ -211,8 +211,8 @@ searchBtn.addEventListener("click", function(){
       output += imageRandom;
       output += `<p class="FontStyle1"><span class="FontStyle2">Name: </span> ${capitalize(data.name)}</p>`;
       output += `<p class="FontStyle1"><span class="FontStyle2">Type: </span>${data.types.map(d=> capitalize(d.type.name)).join(', ')}</p>`;
-      output += `<p class="FontStyle1"><span class="FontStyle2">Weight: </span> <span ">${data.weight} KG </span></p>`; //No Caps on Numbers
-      output += `<p class="FontStyle1"><span class="FontStyle2">Height: </span>${data.height} CM </p>`; //No Caps on Numbers
+      output += `<p class="FontStyle1"><span class="FontStyle2">Weight: </span> <span ">${data.weight} kg</span></p>`; //No Caps on Numbers
+      output += `<p class="FontStyle1"><span class="FontStyle2">Height: </span>${data.height} cm</p>`; //No Caps on Numbers
       output += `<p class="FontStyle1"><span class="FontStyle2">Stats: </span> ${data.stats.map(d=> capitalize(d.stat.name) + ' ' + d.base_stat).join(', ')}</p>`;
       output += `<p class="FontStyle1"><span class="FontStyle2">Abilities: </span> ${data.abilities.map(d=> capitalize(d.ability.name)).join(', ')}</p>`;
       output += moveRandom;
