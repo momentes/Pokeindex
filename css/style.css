@@ -260,6 +260,7 @@ form {
   padding-left: 2%;
 }
 
+
 #cardClose , #pokemonClose {
   cursor: pointer;
   background-color: rgba(250, 0, 0, 0.5);
