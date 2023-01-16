@@ -12,6 +12,7 @@ body {
 
 
 .notefooter {
+  position:absolute ;
   bottom: 0px;;
   width: 100%;
   height: 20px; 
@@ -208,7 +209,6 @@ form {
   background-color: #fefefe;
   font-weight: bold;
   text-transform: uppercase;
-
 }
 
 .modalImage {
@@ -266,6 +266,51 @@ form {
   height: 90%;
   max-height: 80%;
 }
+
+
+.gif-img {
+  max-width: 400px;
+  height: auto;
+  transition: 2.5s;
+}
+
+.gif-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 150px;
+}
+
+.img-logo{
+  width: 60%;
+  transition: 0.5s;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+
+.FontStyle1 {
+  background-color: #fefefe;
+  font-size: medium;
+  }
+
+.FontStyle2{
+  background-color: #fefefe;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: medium;
+}
+
+.modalImage {
+  min-width: 180px;
+}
+
+.modalImageB {
+  max-width: 400px;
+}
+
+
 }
 
 /* #searchList{
