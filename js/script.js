@@ -194,7 +194,7 @@ searchBtn.addEventListener("click", function(){
          // Itemized Move to Single Line
         //Upper Case
         // moveRandom = `<p>Moves: ${randomMoves.map(move => move.name).join(', ')}</p>`;
-        moveRandom = `<p class="FontStyle1"><span class="FontStyle2">Name: </span> ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
+        moveRandom = `<p class="FontStyle1"><span class="FontStyle2">Moves: </span> ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
         
 
         //Upper Case
