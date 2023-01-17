@@ -76,7 +76,7 @@ Google Slides Presentation
 
 https://docs.google.com/presentation/d/1D9acP30j8Vp9gV3vwwEME0JJdfUytmK7lIFvInvzIQM/edit?pli=1#slide=id.g29f43f0a72_0_15
 
-<img src="Images/LiveSite_01.png" width=28%>    <img src="Images/Google_Slide.png" width=28%> 
+<img src="Images/Google_Slide.png" width=28%> 
 
 
 **Credits & References/Resources**
