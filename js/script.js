@@ -1,30 +1,4 @@
 
-/////////////////////////////////////////
-// Random Pokemon Image Generator
-
-// async function fetchPokemon() {
-//     try {
-//         const response = await fetch("https://pokeapi.co/api/v2/pokedex/2/");
-//         const data = await response.json();
-
-//         // Generate Random Pokemon
-//         const randomIndex = Math.floor(Math.random() * data.pokemon_entries.length);
-//         const pokemon = data.pokemon_entries[randomIndex];
-
-//         // Get image and name
-//         const name = pokemon.pokemon_species.name;
-//         const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entry_number}.png`;
-
-//         // Pokemon's name and image
-//         document.getElementById("pokemonName").innerHTML = name;
-//         document.getElementById("pokemonImage").src = imageUrl;
-//     } catch (error) {
-
-//     }
-// }
-
-// setInterval(fetchPokemon, 1000);
-
 
 ////////////////////////////////////////
 
@@ -115,7 +89,6 @@ searchBtn.addEventListener("click", function(){
 });
 
 
-
 /////////////////////////////////////////////
 
 // Pokemon Search
@@ -138,7 +111,9 @@ searchBtn.addEventListener("click", function(){
     return;
   }
 
-/////////////////////////////
+
+/////////////////////////////////////////////
+
     // Make API call for Pokemon Pokedex details
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
     .then(response => {
@@ -196,9 +171,6 @@ searchBtn.addEventListener("click", function(){
         // moveRandom = `<p>Moves: ${randomMoves.map(move => move.name).join(', ')}</p>`;
         moveRandom = `<p class="FontStyle1"><span class="FontStyle2">Moves: </span> ${randomMoves.map(move => capitalize(move.name)).join(', ')}</p>`;
         
-
-        //Upper Case
-      //   moveRandom = `<p>Moves: ${randomMoves.map(move => move.name.replace(/([A-Z])/g, ' $1').trim().charAt(0).toUpperCase() + move.name.slice(1)).join(', ')}</p>`;
       }
     }
 
@@ -248,7 +220,9 @@ searchBtn.addEventListener("click", function(){
     searchInput.placeholder = "Pokemon not found";
   });
 
- //////////////////////// 
+
+//////////////////////////////////////////////
+
 
     // Make API call for card details
     fetch(`https://api.tcgdex.net/v2/en/cards/?name=${searchValue}`)
@@ -316,20 +290,6 @@ window.addEventListener("click", function(event) {
     cardModal.style.display = "none";
   }
 });
-
-
-
-// closeModal.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
-
 
 
 ////////////////////////

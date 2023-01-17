@@ -43,7 +43,7 @@ body {
     transition: 0.5s;
   }
 
-  
+
 /*  SEARCH BAR */
 
 .search-container {
@@ -90,7 +90,7 @@ body {
 }
 
 
-/* Modal  */
+/* MODAL */
 .modal-container {
   display: flex;
 }
@@ -113,7 +113,8 @@ form {
   /* Black w/ opacity */
 }
 
-/* Modal Content */
+/* MODAL CONTENT */
+
 .modal-content {
   position: relative;
   background-color: rgba(255, 255, 255, 0.7);
@@ -127,7 +128,7 @@ form {
   animation-duration: 0.4s
 }
 
-/* Add Animation */
+/* ADD ANIMATION */
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0} 
   to {top:0; opacity:1}
@@ -138,7 +139,9 @@ form {
   to {top:0; opacity:1}
 } 
 
-/* Left and right modal side by side */
+
+/* LEFT AND RIGHT MODAL SIDE BY SIDE */
+
 #pokemonModal {
   left: 0;
 }
@@ -149,7 +152,8 @@ form {
 }
 
 
-/* Styling Modal Text and Image Size */
+/* STYLING MODAL TEXT AND IMAGE SIZE */
+
 .FontStyle1 {
   background-color: #fefefe;
   }
@@ -168,7 +172,8 @@ form {
   max-width: 350px;
 }
 
-/* Media Mobile Display  */
+
+/* MEDIA MOBILE DISPLAY  */
 
  @media only screen and (max-device-width: 480px) {
 
