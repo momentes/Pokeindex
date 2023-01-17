@@ -91,6 +91,7 @@ body {
 
 
 /* MODAL */
+
 .modal-container {
   display: flex;
 }
@@ -272,7 +273,6 @@ form {
   font-size: 12px;
   }
 }
-
 
 
 #cardClose , #pokemonClose {
