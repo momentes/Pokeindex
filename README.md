@@ -68,7 +68,15 @@ below is a link to our project to-do list:
 Once our application is deployed a link and a screenshot of our application will be below
 - https://momentes.github.io/Pokeindex/  
 
-<img src="Images/LiveSite_01.png" width=28%>    <img src="Images/LiveSite_02.png" width=28%> 
+<img src="Images/LiveSite_01.png" width=28%>    <img src="Images/LiveSite_02.png" width=28%>    
+<img src="Images/LiveSite_03.png" width=28%> 
+
+
+Google Slides Presentation
+
+https://docs.google.com/presentation/d/1D9acP30j8Vp9gV3vwwEME0JJdfUytmK7lIFvInvzIQM/edit?pli=1#slide=id.g29f43f0a72_0_15
+
+<img src="Images/LiveSite_01.png" width=28%>    <img src="Images/Google_Slide.png" width=28%> 
 
 
 **Credits & References/Resources**
